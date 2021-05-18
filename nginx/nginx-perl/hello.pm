@@ -34,6 +34,8 @@ sub handler {
         $r->sendfile($filename);
         $r->flush();
         return OK;
+    } elsif ($filename eq "") {
+        return HTTP_FORBIDDEN;
     } else {
         $file = $bucketname->get_key($filename);
         if ($file) {

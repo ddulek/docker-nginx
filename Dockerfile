@@ -7,7 +7,8 @@ RUN INSTALL_PKGS="perl perl-devel perl-App-cpanminus perl-FCGI patch gcc" && \
     rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*' && cpanm install \
     Net::Amazon::S3 Net::Amazon::S3::Authorization::Basic \
-    Net::Amazon::S3::Vendor Net::Amazon::S3::Vendor::Generic && rm -fr .cpanm
+    Net::Amazon::S3::Vendor Net::Amazon::S3::Vendor::Generic \\
+    LWP::Protocol::https && rm -fr .cpanm
 
 USER 1001
 CMD $STI_SCRIPTS_PATH/usage
